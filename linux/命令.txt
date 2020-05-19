@@ -1,0 +1,384 @@
+============================================
+kill -9 进程号   // 杀死进程
+kill -HUP 进程号  // 重启进程
+============================================
+cat /proc/version 查看linux系统版本
+=============================================
+screen :
+screen -S screenName 新建一个叫screenName的session
+screen -ls  列出当前所有的session
+screen -r screenName -> 进入screenName这个session
+screen -d yourname -> 远程detach某个session（相当于后台运行这个session）
+screen -d -r yourname -> 结束当前session并回到yourname这个session
+
+=============================================
+nohub
+nohup命令
+　　nohup 命令
+　　用途：不挂断地运行命令。
+语法：nohup Command [ Arg … ] [　& ]
+　　描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断(SIGHUP)信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 & ( 表示”and”的符号)到命令的尾部。
+无论是否将 nohup 命令的输出重定向到终端，输出都将附加到当前目录的 nohup.out 文件中。如果当前目录的 nohup.out 文件不可写，输出重定向到 $HOME/nohup.out 文件中。如果没有文件能创建或打开以用于追加，那么 Command 参数指定的命令不可调用。如果标准错误是一个终端，那么把指定的命令写给标准错误的所有输出作为标准输出重定向到相同的文件描述符。
+nohup的简单使用
+在执行命令时在命令前面加上nohup，然后回车开始运行。
+这时你会发现该有的输出其实并没有输出出来，这个时候不要方，这是因为nohup命令将你的所有输出都输出到了当前文件夹下的nohup.out文件中，自己可以使用vim指令进行一个查看。
+nohup命令及其输出文件
+　　nohup命令：如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。nohup就是不挂起的意思( n ohang up)。
+　　该命令的一般形式为：nohup command &
+　　使用nohup命令提交作业
+　　如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为nohup.out的文件中，除非另外指定了输出文件：
+　　nohup command > myout.file 2>&1 &
+=============================================
+关于防火墙
+1. systemctl status firewalld 查询防火墙状态
+2. systemctl start firewalld 开户防火墙
+3. systemctl stop firewalld 关闭防火墙
+4. firewall-cmd --list-ports 查询哪些端口开通防火墙
+5. firewall-cmd --zone=public --add-port=3005/tcp --permanent
+   firewall-cmd --reload   开通端口为3005的防火墙
+=============================================
+虚拟机linux系统下ifconfig获取不到ip(试试 ip addr)
+原因：网卡未激活
+ls /sbin/ifconfig  如果提示不存在, 证明没有安装
+此时需要安装: yum install net-tools -y  
+
+=============================================
+ps -ef|grep tomcate
+创建文件夹: mkdir test
+创建文件: touch one.txt
+编辑txt文件: vi one.txt
+退出编辑:先按ESC 再输入: 再输入WQ(W:写入,Q:退出)
+查看txt文件: cat one.txt(直接显示文本内容)
+复制粘贴文件: cp 源文件(路径+文件名) 目标文件(路径+新文件名)    || 复制多个文件 cp {file1,file2,file3} /path (注意file1,file2之前不要有空格)
+剪切粘贴文件: mv 源文件或目录  目标文件或目录
+删除文件:rm 文件名　　　　　　慎用 rm -rf  
+删除文件夹:rm -rf 文件夹名
+压缩文件: zip -r XXX.zip ./*
+解压缩: unzip XXX.zip
+压缩tar: tar -zcvf XXX.tar.gz ./*
+解压tar文件: tar xzf 文件名
+file命令来查看文件类型，从而进一步判断该文件应该使用什么命令来处理:  用file命令查看文件类型
+文件重命名: mv A B 将A重命名成B
+linux下搜索文件: find / -name 文件名/文件夹
+
+
+在 cp sourcefile distfile时, 可能出现
+omitting directory sourcefile,
+原因是sourcefile中还有文件夹, 不能直接复制, 要使用递归复制
+解决方法: cp -r sourcefile distfile
+
+切换到上次进入的目录 cd - 
+=============================================
+tail -f logs.log 默认最后10行
+tail -f -n 20 log.log 最后20行
+
+此时要想暂停刷新，使用ctrl+s暂停终端。
+若想继续终端，使用ctrl+q。
+若想退出tail命令，直接使用ctrl+c。
+
+如果是用vi打开文件后，在命令行下输入“/关键字”
+如果是在没有打开文件的前提就用"cat 文件名 | grep "关键字""
+
+进入编辑状态后，英文状态下输入，:set nu，回车便可以显示行数
+diff svnserve.conf.180110 svnserve.conf 对比文件
+
+================================================================================================
+yum search ifconfig
+yum search XXX
+// 在线安装
+yum install
+如: yum install wget
+yum -y install vim-enhanced 安装vim
+
+yum -y install tree 安装tree
+
+使用rpm安装
+rpm -ivh lx_unzip-6.0-5.el6.x86_64.rpm
+
+// 安装redis
+ wget http://download.redis.io/releases/redis-4.0.11.tar.gz
+ tar xzf redis-4.0.11.tar.gz
+ cd redis-4.0.11
+ make
+
+Java访问redis
+1.关闭linux的防火墙:sudo service iptables stop
+2.修改redis.conf中的
+2.1 bind 127.0.0.1 注释掉
+2.2 protected-model yes 改成 protected-mode no
+2.3 daemonize no 改成 daemonize yes
+
+================================================================================================
+// 网络测试
+curl -i http://10.119.254.234:8293
+================================================================================================
+
+vi查找下一个:
+按下n查找下一个，按下N查找上一个。
+vi 下一页:
+1.向下翻页快捷键(下一页):Ctrl + f
+2.向上翻页快捷键(上一页):Ctrl + b
+3.首页 gg
+4.尾页 shift+g
+
+=============================================
+linux重启:
+1.reboot
+2.shutdown -r now 立刻重启(root用户使用)
+
+linux关机:
+1、halt   立刻关机
+2、poweroff  立刻关机
+
+=============================================
+安装可视化界面:
+yum groupinstall "GNOME Desktop" "Graphical Administration Tools"
+
+=============================================
+ls -lht可查看文件大小
+
+=============================================
+
+ps ax : 显示当前系统进程的列表 
+
+ps aux : 显示当前系统进程详细列表以及进程用户
+如:ps aux --获取全部
+   ps aux|grep XXX  -- 获取XXX的进程信息
+
+=============================================
+先使用命令 yum install -y lrzsz 安装
+rz 上传    或者直接拖动
+sz 要下的文件 回车 
+rz 上传
+sz 下载
+=============================================
+sudo chmod 777 文件夹名
+sudo chmod +x 文件名(将文件变成可执行文件)
+=============================================
+查询哪些端口已占用
+sudo firewall-cmd --list-ports
+netstat -nupl (UDP类型的端口)
+netstat -ntpl (TCP类型的端口)
+查询哪些端口被占用: netstat -ntlp
+
+开通端口
+firewall-cmd --zone=public --add-port=3005/tcp --permanent
+firewall-cmd --reload
+
+=============================================
+1.jenkins启动命令
+[root@localhost /]#service jenkins start
+
+2.jenkins停止命令
+[root@localhost /]#service jenkins stop
+
+3.查询jenkins状态命令
+[root@localhost /]#service jenkins status
+
+4.重启jenkins命令
+[root@localhost /]#service jenkins restart
+=============================================
+
+虚拟机新装了一个CentOs7，然后做防火墙配置的时候找不到iptables文件，解决方法如下：
+
+因为默认使用的是firewall作为防火墙，把他停掉装个iptable
+
+systemctl stop firewalld 
+systemctl mask firewalld
+
+yum install -y iptables 
+yum install iptables-services
+
+然后就有iptables文件，就可以作配置
+
+开启服务 
+systemctl start iptables.service
+
+systemctl restart iptables.service // 重启防火墙使配置生效 
+systemctl enable iptables.service // 设置防火墙开机启动
+=============================================
+防火墙操作
+https://blog.csdn.net/bbwangj/article/details/74502967
+
+=============================================
+
+普通用户mis, 切换到root:   sudo -i  或者 sudo su root 或者sudo su
+切换到普通mis: su mis(普通用户名) 或者 exit
+
+
+按文件名查询文件位置: find / -name filename //在根目录下查找文件(全盘查询	)
+
+查询文件大小:  du -sh * 
+
+=============================================
+测试服务器间的连通性:
+curl ip:port
+wget ip:port
+=============================================
+
+docker常用命令
+ 0. systemctl start  docker.service 启动docker
+ 1. docker search mysql   这条命令表示查询mysql的所有镜像信息
+ 2. docker pull mysql  表示从官方下载默认版本的mysql，latest
+    docker pull mysql:5.5  表示下载mysql版本5.5的
+ 3. docker images 查看当前本地的所有镜像
+ 4. docker image rm image-id   删除制定镜像，image-id是每个镜像独有的id
+ 5. docker run ....  根据镜像启动容器 (具体查看菜鸟教程)
+ 6. docker ps            查看运行中的容器
+ 7. docker ps -a         查看所有容器(包含未启动的容器) 
+ 8. docker start 容器id   启动容器
+ 9. docker stop  容器id   停止容器
+10. docker rm    容器id   删除容器
+11. service firewalld status   查看防火墙状态
+12. service firewalld stop     关闭防火墙
+13. docker logs container_id   查看日志
+
+
+
+
+==================================================================
+
+docker run --name myoracle11g -p 8080:1521 -d 
+
+docker使用MySQL镜像:
+docker run --name docker-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
+--name: 数据库名称取名为docker-mysql
+-p: 前面3306表示Linux的端口号, 后面的3306表示docker容器的端口号. 这个意思是将虚拟机的3306端口映射到容器中的3306
+-e: 设置MySQL管理员root的密码为123456
+-d: 成功后输出container_id
+
+docker使用redis镜像:
+docker run --name docker-redis -p 6379:6379 -d redis:3.2 redis-server --appendonly yes
+redis-server --appendonly yes: 在容器执行redis-server启动命令，并打开redis持久化配置
+redis测试:docker exec -it container_id redis-cli
+
+docker使用tomcat镜像:
+docker run --name docker-tomcat -p 8080:8080 -d tomcat:8.5
+
+docker stop container_id
+docker rm container_id
+
+==================================================================
+将pull下来的镜像另存为:redis_image.docker
+docker save redis -o redis_image.docker redis:3.2
+然后将redis_image.docker传到没有网络的服务器, 执行加载命令:
+docker load -i redis.docker
+
+docker进入一个已启动的容器:
+进入一个已经在运行的容器
+sudo docker ps  查看container_id
+sudo docker exec -it container_id /bin/bash  进入容器
+==================================================================
+docker安装jdk:
+1. dokcer创建jdk的镜像: (通过Dockerfile的方式)
+# CentOS with JDK 8
+# Author   dockerzlnewbie
+
+# build a new image with basic  centos
+FROM centos:7 #如果docker安装了centos:7的镜像了, 就使用安装的, 如果没安装,需要下载
+# who is the author
+MAINTAINER dockerzlnewbie
+
+# make a new directory to store the jdk files(可以不用建/java这一层的文件夹)
+# RUN mkdir /usr/local/java
+
+# copy the jdk  archive to the image,and it will automaticlly unzip the tar file
+ADD jdk-8u201-linux-x64.tar.gz /usr/local/ #将jdk-8u201-linux-x64.tar.gz解压到/usr/local/jdk1.8.0_201目录下
+
+# make a symbol link(可以不加)
+RUN ln -s /usr/local/java/jdk1.8.0_201 /usr/local/java/jdk
+
+# set environment variables
+ENV JAVA_HOME /usr/local/jdk1.8.0_201
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+
+2.使用Dockerfile build创建镜像:
+docker build -t docker-jdk8:1.8.0_201 . -f Dockerfile    
+docker build -t jdk-8u144:20180619 . -f jdkdockerfile      (jdk-8u144:20180619   ===>自定义的镜像名:自定义的版本号)
+
+3.启动jdk镜像: docker run -d -it docker-jdk8:1.8.0_201 /bin/bash
+
+======================================================================================================================================================================================================
+docker部署springboot的流程:
+1. 安装jdk(如果没有安装jdk的镜像, 部署springboot的Dockerfile就需要pull);
+2. 将spring.jar和Dockerfile放在同一文件夹下
+3. 编写Dockerfile:
+	FROM myjdk:myversion #此处的myjdk为第1步的jdk镜像名(REPOSITORY)
+	ADD spring.jar /docker.jar #将spring.jar复制到docker容器的根目录下,且重命名为docker.jar
+	ENTRYPOINT ["java","-jar","/docker.jar"]
+4. 创建spring.jar的镜像(也即docker.jar的镜像)
+	docker build -t springboot:version1.0 . -f Dockerfile    (如果Dockerfile命名为Dockerfile, 好像不需要后面的的-f选项; 如果命名为Dockerfile-test,需要用 -f Dockerfile-test)
+5. 此时, 已经生成一个名为springboot,版本号为version1.0的镜像, 执行此镜像:
+	docker run --name springbootcontainer -d -p 8082:3008 -it springboot:version1.0  /bin/bash
+6. 此时生成一个springbootcontainer的容器
+7. docker exec -it container_id /bin/bash 命令进入springbootcontainer容器
+
+
+======================================================================================================================================================================================================
+javap -c 反编译.class文件
+
+======================================================================================================================================================================================================	
+解压.gz文件: gunzip file.gz
+		
+echo $JAVA_HOME	查询jdk路径
+	
+
+=================================================================================================================================================================启动springboot项目的三种方式:
+1. main方法启动
+2. mvn spring-boot:run
+3. java -jar XXX.jar	
+	
+	
+	
+	
+	
+=================================================================================================================================================================
+ 
+ bash: commond: ifconfig not found
+
+ 查看 /sbin/ifconfig是否存在
+
+
+如果ifconfig命令存在，查看环境变量设置    
+
+#echo $PATH
+       如果环境变量中没有包含ifconfig命令的路径
+
+        临时修改环境变量：在shell中输入       
+
+$export PATH = $PATH:/sbin
+       然后再输入ifconfig命令即可，但是这只是临时更改了shell中的PATH，如果关闭shell，则修改消失，下次还需要重复如上操作
+
+        永久修改PATH变量使之包含/sbin路径：
+
+        打开/etc/profile文件，在其中输入export PATH=$PATH:/sbin，保存并重启即可，这样一来，PATH路径永久修改成功，以后任何时候只输入ifconfig命令即可
+
+  3. 如果ifconfig命令不存在
+
+yum upgrade -y
+yum install net-tools
+	
+	
+	
+下面是相关命令的解释：
+
+df -hl 查看磁盘剩余空间
+ 
+df -h 查看每个根路径的分区大小
+ 
+du -sh [目录名] 返回该目录的大小
+ 
+du -sm [文件夹] 返回该文件夹总M数
+ 
+du -h [目录名] 查看指定文件夹下的所有文件大小（包含子文件夹）	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

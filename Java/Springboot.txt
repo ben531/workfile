@@ -1,0 +1,6 @@
+logging.file=C:/Springboot.log
+
+logging.path=/Springboot.log
+
+spring.profile.active=dev
+

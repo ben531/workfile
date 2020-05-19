@@ -1,0 +1,164 @@
+linux下装jdk
+1.下载jdk,
+2.解压jdk:
+tar -zxvf jdk-8u60-linux-x64.tar.gz
+3.设置文件目录,(直接在profile文件中加上以下内容)
+vim /etc/profile
+
+添加如下内容：JAVA_HOME根据实际目录来
+JAVA_HOME=/usr/java/jdk1.8.0_60
+CLASSPATH=$JAVA_HOME/lib/
+PATH=$PATH:$JAVA_HOME/bin
+export PATH JAVA_HOME CLASSPATH
+=============================================================
+linux下装tomcat
+1. 下载tomcat
+2. 解压tomcat
+tar -zxvf xxx
+=============================================================
+linux下装Jenkins
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+yum install jenkins
+
+
+手动下载jenkins-2.153-1.1.noarch.rpm, 然后安装
+rpm -ivh 包全名（查询依赖网址：http://www.rpmfind.net）
+	-i(install)：安装
+	-v(verbose)：显示详细信息
+	-h(hash)：显示进度
+	--nodeps：不检测依赖性
+
+安装后, 启动: service jenkins start , 可能报错:
+● jenkins.service - LSB: Jenkins Automation Server
+   Loaded: loaded (/etc/rc.d/init.d/jenkins; bad; vendor preset: disabled)
+   Active: failed (Result: exit-code) since 二 2018-11-27 08:22:37 CST; 50s ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 4384 ExecStart=/etc/rc.d/init.d/jenkins start (code=exited, status=1/FAILURE)
+
+11月 27 08:22:37 localhost.localdomain systemd[1]: Starting LSB: Jenkins Automation Server...
+11月 27 08:22:37 localhost.localdomain runuser[4389]: pam_unix(runuser:session): session opened for user jenkins by (uid=0)
+11月 27 08:22:37 localhost.localdomain jenkins[4384]: Starting Jenkins bash: /usr/java/jdk1.8.0_191: 是一个目录
+11月 27 08:22:37 localhost.localdomain jenkins[4384]: [失败]
+11月 27 08:22:37 localhost.localdomain systemd[1]: jenkins.service: control process exited, code=exited status=1
+11月 27 08:22:37 localhost.localdomain systemd[1]: Failed to start LSB: Jenkins Automation Server.
+11月 27 08:22:37 localhost.localdomain systemd[1]: Unit jenkins.service entered failed state.
+11月 27 08:22:37 localhost.localdomain systemd[1]: jenkins.service failed.
+Warning: jenkins.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+
+注意 11月 27 08:22:37 localhost.localdomain jenkins[4384]: Starting Jenkins bash: /usr/java/jdk1.8.0_191: 是一个目录 这一行的报错, 按报错修改即可.
+
+再次启动Jenkins服务
+浏览器输入ip:port
+根据页面路径找到密码
+
+查看默认安装目录：# rpm -ql jenkins(主要是防火墙的问题)
+
+==================================================================================================================================================================
+安装docker
+https://www.jianshu.com/p/3a4cd73e3272
+#查看你当前的内核版本
+uname -r
+
+#安装 Docker
+yum -y install docker
+
+#启动 Docker 后台服务
+service docker start
+或者 
+systemctl start docker
+
+#测试运行 hello-world,由于本地没有hello-world这个镜像，所以会下载一个hello-world的镜像，并在容器内运行。
+docker run hello-world
+
+查看docker版本
+docker version
+
+设置docker开机启动
+systemctl enable docker
+
+
+========================================================================================================================================================================================================================
+docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
+
+dokcer下安装MySQL
+设置docker开机启动: systemctl enable docker
+1. 查看docker安装了哪些镜像: docker images
+2. docker pull mysql:5.6 拉取版本号为5.6的MySQL
+3. 创建并启动一个MySQL容器:
+   docker run --name virtual-mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:5.6
+	–name：给新创建的容器命名，此处命名为virtual-mysql
+	-e：配置信息，此处配置mysql的root用户的登陆密码
+	-p：端口映射，此处映射主机3306端口到容器virtual-mysql的3306端口   (前一个端口号是客户端输入的, 后一个端口号是docker容器的)
+	-d：成功启动容器后输出容器的完整ID，例如上图 73f8811f669ee...
+	最后一个mysql指的是 mysql镜像名字:版本号
+4. 到这里我们查看容器运行状态：docker ps
+	[root@localhost ~]# docker ps
+	CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                     NAMES
+	760872dabcd6        mysql:5.6           "docker-entrypoint..."   About a minute ago   Up About a minute   0.0.0.0:32768->3306/tcp   virtual-mysql
+5. 测试连接
+	连接MySQL前需要防火墙开放端口或者关闭防火墙。
+开放端口：
+$ sudo firewall-cmd --add-port=3306/tcp
+关闭防火墙：
+$ sudo systemctl stop firewalld
+
+
+============================================================================================================================================================================================================================
+linux下安装maven
+1. 上传文件apache-maven-3.6.1-bin.tar.gz
+2. tar -xvzf apache-maven-3.6.1-bin.tar.gz
+3. vim /etc/profile
+ 
+  3.1 定义MAVEN_HOME:
+	MAVEN_HOME=/usr/maven
+  3.2 PATH后面追加:
+	$MAVEN_HOME/bin
+  3.3 export 后追加MAVEN_HOME
+	export MAVEN_HOME
+4.刷新/etc/profile使修改生效
+	source /etc/profile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

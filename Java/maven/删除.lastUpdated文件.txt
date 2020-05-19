@@ -1,0 +1,5 @@
+在cmd窗口运行
+
+cd 仓库文件夹
+for /r %i in (*.lastUpdated) do del %i
+

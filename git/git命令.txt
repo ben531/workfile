@@ -1,0 +1,68 @@
+(master) git merge mybranch // 切到master分支后，将mybranch合并到master上
+
+git branch 	  查询本地分支
+git branch -r 查询远程所有分支
+git branch -a 查询本地远程所有分支
+
+(master) git checkout mybranch  //从master切换到mybranch分支
+
+
+git help reset // 查看reset的帮助
+
+git status // 查看哪些文件没有在暂存区
+git add . // 将全部文件/文件夹放入暂存区
+git add file // 将file文件放入暂存区
+git rm --cached file //将file文件从暂存区移除
+git rm -r --cached 文件夹 //将文件夹从暂存区移除
+
+git commit file // 将file文件从暂存区提交到本地库
+git commit -m "message" // 将file文件从暂存区提交到本地库
+
+git log // 历史记录
+git log --pretty=oneline // 用一行显示历史记录(hash值显示全部)
+git log --oneline // 用一行显示历史记录(hash值显示一部分)
+git reflog //移动指针进行版本回退
+
+git reset --hard hash值          // 可以前进或后退
+git reset --hard HEAD^           // 只能往后退, 有个^, 回退几个版本
+git reset --hard HEAD~n          // 只能往后退,  回退到n个版本
+
+git remote -v //查看远程地址
+git remote add origin url //将远程地址url命别名为origin添加进去
+git remote remove url // 删除远程仓库地址
+
+=====================================================================
+保存git账户密码: 在.git/config文件中追加如下代码
+[credential]
+    helper = store
+或:
+1、设置记住密码（默认15分钟）：
+git config --global credential.helper cache
+
+2、如果想自己设置时间，可以这样做：
+git config credential.helper 'cache --timeout=3600'
+这样就设置一个小时之后失效
+
+3、长期存储密码：
+全局: git config --global credential.helper store
+本地: git config --local credential.helper store
+
+4、增加远程地址的时候带上密码也是可以的。(推荐)
+http://yourname:password@git.oschina.net/name/project.git
+=====================================================================
+
+git处理冲突:
+A提交了文件到远程仓库,
+此时B也修改了该文件, 但并不知道A修改并提交了,此时B在push时会提交不上去.
+B应该先将自己的文件备份, 再将版本回退到上一个版本(git reset --hard HEAD^或git reset --hard 上个版本的hash值),
+然后再从远程仓库pull到本地(git pull origin master),
+再对比冲突, 最后提交.
+
+=====================================================================
+
+当修改了远程仓库的文件，而又不想每次提交的时候显示提交这个文件时(典型的是修改*.properties文件)：
+git restore 文件名
+如: git restore application.properties
+如果想恢复对此文件的管理：
+git restore --staged 文件名
+如: git restore --staged application.properties
