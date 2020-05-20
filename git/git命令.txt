@@ -12,6 +12,7 @@ git help reset // 查看reset的帮助
 git status // 查看哪些文件没有在暂存区
 git add . // 将全部文件/文件夹放入暂存区
 git add file // 将file文件放入暂存区
+git ls-files //查看暂存区有哪些文件
 git rm --cached file //将file文件从暂存区移除
 git rm -r --cached 文件夹 //将文件夹从暂存区移除
 
