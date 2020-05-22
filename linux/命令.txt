@@ -270,7 +270,7 @@ sudo docker ps  查看container_id
 sudo docker exec -it container_id /bin/bash  进入容器
 ==================================================================
 docker安装jdk:
-1. dokcer创建jdk的镜像: (通过Dockerfile的方式)
+1. docker创建jdk的镜像: (通过Dockerfile的方式)
 # CentOS with JDK 8
 # Author   dockerzlnewbie
 
