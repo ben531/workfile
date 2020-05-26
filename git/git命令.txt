@@ -1,3 +1,9 @@
+生成ssh key文件，执行ssh-keygen -t rsa：
+- t 指定密钥类型，默认是 rsa ，可以省略
+然后会让你输入两次密码（密码可不填），最后出现 key fingerprint和 key's randomart 就表示创建成功了。
+最后在gitlab的sshkey中添加~/.ssh/id_rsa的内容即可。
+
+
 (master) git merge mybranch // 切到master分支后，将mybranch合并到master上
 
 git branch 	  查询本地分支
