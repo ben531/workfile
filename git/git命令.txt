@@ -26,7 +26,7 @@ git rm --cached file //将file文件从暂存区移除
 git rm -r --cached 文件夹 //将文件夹从暂存区移除
 
 git commit file // 将file文件从暂存区提交到本地库
-git commit -m "message" // 将file文件从暂存区提交到本地库
+git commit -m 'message' // 将file文件从暂存区提交到本地库
 
 git log // 历史记录
 git log --pretty=oneline // 用一行显示历史记录(hash值显示全部)
