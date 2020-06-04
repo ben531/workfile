@@ -561,3 +561,4 @@
 [0530/181622:ERRORERROR:.\MainLoader.cpp(212)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
 [0601/084738:ERRORERROR:.\MainLoader.cpp(212)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
 [0603/150657:ERRORERROR:.\MainLoader.cpp(212)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
+[0604/163012:ERRORERROR:.\MainLoader.cpp(212)] Could not find exported function RelaunchChromeBrowserWithNewCommandLineIfNeeded
