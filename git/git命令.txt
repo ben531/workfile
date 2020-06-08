@@ -15,14 +15,16 @@ ctrl + l 清屏（等同于clear命令）
 git branch 	  查询本地分支
 git branch -r 查询远程所有分支
 git branch -a 查询本地和远程所有分支
-git checkout -b mybranch 创建mybranch分支
-(master) git merge mybranch // 切到master分支后，将mybranch合并到master上
 (master) git checkout mybranch  //从master切换到mybranch分支
-git push origin dev //提交该分支到远程分支仓库
+git checkout -b mybranch 创建mybranch分支
+git push origin mybranch //提交该分支到远程分支仓库
+(master) git merge mybranch // 切到master分支后，将mybranch合并到master上
+(master) git push origin master //将合并后的master推送到远程仓库
+
 git push origin –delete mybranch //删除服务器远端的分支
+
 git branch –d mybranch //删除本地已经合并了的分支
 git branch –D mybranch //删除本地未合并的分支
-
 
 git help reset // 查看reset的帮助
 
