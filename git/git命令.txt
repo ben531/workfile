@@ -18,7 +18,7 @@ git branch -a 查询本地和远程所有分支
 (master) git checkout mybranch  //从master切换到mybranch分支
 git checkout -b mybranch 创建mybranch分支
 git push origin mybranch //提交该分支到远程分支仓库
-(master) git merge mybranch // 切到master分支后，将mybranch合并到master上
+(master) git merge mybranch // 切到master分支后，将mybranch合并到本地master上
 (master) git push origin master //将合并后的master推送到远程仓库
 
 git push origin –delete mybranch //删除服务器远端的分支
