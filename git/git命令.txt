@@ -1,4 +1,9 @@
-
+将已有代码提交:
+git init
+git add .
+git commit -m '初次提交'
+git remote add origin  github的地址 (如:https://github.com/ben531/springboot-redis.git)
+git push -u origin master
 =====================================================================
 #新增的忽略文件没有生效，是因为git是有缓存的，而之前的文件在缓存中，并不会清除掉，还会继续提交，所以更新.gitignore文件，要清除缓存文件
 git rm -r --cached . 
