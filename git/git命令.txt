@@ -1,3 +1,10 @@
+github 采用ssh提交:
+生成ssh key文件, 下面有,
+再在github中设置,
+最后 git remote set-url origin git@github.com:GitRepoName.git
+git push origin master
+
+=====================================================================
 将已有代码提交:
 git init
 git add .
@@ -13,7 +20,7 @@ git push origin master
 =====================================================================
 ctrl + l 清屏（等同于clear命令）
 =====================================================================
-生成ssh key文件，执行ssh-keygen -t rsa：
+生成ssh key文件，执行ssh-keygen -t rsa
 - t 指定密钥类型，默认是 rsa ，可以省略
 然后会让你输入两次密码（密码可不填），最后出现 key fingerprint和 key's randomart 就表示创建成功了。
 最后在gitlab的sshkey中添加~/.ssh/id_rsa的内容即可。
