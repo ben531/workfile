@@ -1,9 +1,9 @@
+
 github 采用ssh提交:
 生成ssh key文件, 下面有,
 再在github中设置,
 最后 git remote set-url origin git@github.com:GitRepoName.git
 git push origin master
-
 =====================================================================
 将已有代码提交:
 git init
@@ -11,6 +11,8 @@ git add .
 git commit -m '初次提交'
 git remote add origin  github的地址 (如:https://github.com/ben531/springboot-redis.git)
 git push -u origin master
+=======
+我现在不知道其他人在相同的地方改过东西了
 =====================================================================
 #新增的忽略文件没有生效，是因为git是有缓存的，而之前的文件在缓存中，并不会清除掉，还会继续提交，所以更新.gitignore文件，要清除缓存文件
 git rm -r --cached . 
