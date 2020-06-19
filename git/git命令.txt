@@ -1,9 +1,9 @@
-
 github 采用ssh提交:
 生成ssh key文件, 下面有,
 再在github中设置,
 最后 git remote set-url origin git@github.com:GitRepoName.git
 git push origin master
+
 =====================================================================
 将已有代码提交:
 git init
@@ -11,8 +11,6 @@ git add .
 git commit -m '初次提交'
 git remote add origin  github的地址 (如:https://github.com/ben531/springboot-redis.git)
 git push -u origin master
-=======
-我现在不知道其他人在相同的地方改过东西了
 =====================================================================
 #新增的忽略文件没有生效，是因为git是有缓存的，而之前的文件在缓存中，并不会清除掉，还会继续提交，所以更新.gitignore文件，要清除缓存文件
 git rm -r --cached . 
@@ -25,7 +23,7 @@ ctrl + l 清屏（等同于clear命令）
 生成ssh key文件，执行ssh-keygen -t rsa
 - t 指定密钥类型，默认是 rsa ，可以省略
 然后会让你输入两次密码（密码可不填），最后出现 key fingerprint和 key's randomart 就表示创建成功了。
-最后在gitlab的sshkey中添加~/.ssh/id_rsa的内容即可。
+最后在gitlab的sshkey中添加~/.ssh/id_rsa.pub文件的内容即可。
 
 =====================================================================
 git branch 	  查询本地分支
