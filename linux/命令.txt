@@ -205,10 +205,9 @@ https://blog.csdn.net/bbwangj/article/details/74502967
 普通用户mis, 切换到root:   sudo -i  或者 sudo su root 或者sudo su
 切换到普通mis: su mis(普通用户名) 或者 exit
 
+按文件名查询文件位置: find / -name filename //在根目录下查找文件(全盘查询)
 
-按文件名查询文件位置: find / -name filename //在根目录下查找文件(全盘查询	)
-
-查询文件大小:  du -sh * 
+查看文件大小:  du -sh * 
 
 =============================================
 测试服务器间的连通性:
@@ -219,7 +218,7 @@ wget ip:port
 docker常用命令
  0. systemctl start  docker.service 启动docker
  1. docker search mysql   这条命令表示查询mysql的所有镜像信息
- 2. docker pull mysql  表示从官方下载默认版本的mysql，latest
+ 2. docker pull mysql  表示从官方下载默认(最新)版本的mysql，latest
     docker pull mysql:5.5  表示下载mysql版本5.5的
  3. docker images 查看当前本地的所有镜像
  4. docker image rm image-id   删除制定镜像，image-id是每个镜像独有的id
@@ -234,8 +233,6 @@ docker常用命令
 13. docker logs container_id   查看日志
 
 
-
-
 ==================================================================
 
 docker run --name myoracle11g -p 8080:1521 -d 
@@ -243,7 +240,7 @@ docker run --name myoracle11g -p 8080:1521 -d
 docker使用MySQL镜像:
 docker run --name docker-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
 --name: 数据库名称取名为docker-mysql
--p: 前面3306表示Linux的端口号, 后面的3306表示docker容器的端口号. 这个意思是将虚拟机的3306端口映射到容器中的3306
+-p: 前面3306表示Linux的端口号, 后面的3306表示docker容器的端口号. 这个意思是将Linux的3306端口映射到docker容器中的3306
 -e: 设置MySQL管理员root的密码为123456
 -d: 成功后输出container_id
 
@@ -322,19 +319,13 @@ javap -c 反编译.class文件
 解压.gz文件: gunzip file.gz
 		
 echo $JAVA_HOME	查询jdk路径
-	
 
 =================================================================================================================================================================启动springboot项目的三种方式:
 1. main方法启动
 2. mvn spring-boot:run
 3. java -jar XXX.jar	
 	
-	
-	
-	
-	
 =================================================================================================================================================================
- 
  bash: commond: ifconfig not found
 
  查看 /sbin/ifconfig是否存在
