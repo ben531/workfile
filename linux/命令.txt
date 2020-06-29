@@ -94,6 +94,7 @@ yum -y install tree 安装tree
 
 使用rpm安装
 rpm -ivh lx_unzip-6.0-5.el6.x86_64.rpm
+(注意rpm安装有些安装包会有坑,忘了是什么安装包了)
 
 // 安装redis
  wget http://download.redis.io/releases/redis-4.0.11.tar.gz
