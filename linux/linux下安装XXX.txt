@@ -89,7 +89,7 @@ dokcer下安装MySQL
    docker run --name virtual-mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:5.6
 	–name：给新创建的容器命名，此处命名为virtual-mysql
 	-e：配置信息，此处配置mysql的root用户的登陆密码
-	-p：端口映射，此处映射主机3306端口到容器virtual-mysql的3306端口   (前一个端口号是客户端输入的, 后一个端口号是docker容器的)
+	-p：端口映射，此处映射主机3306端口到容器virtual-mysql的3306端口   (前一个端口号是客户端输入的,也就是Linux的, 后一个端口号是docker容器的)
 	-d：成功启动容器后输出容器的完整ID，例如上图 73f8811f669ee...
 	最后一个mysql指的是 mysql镜像名字:版本号
 4. 到这里我们查看容器运行状态：docker ps
