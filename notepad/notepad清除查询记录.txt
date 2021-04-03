@@ -1,6 +1,0 @@
-删除notepad中的查找记录：
-
-打开“C:\Users\Yjb\AppData\Roaming\Notepad++”目录，
-找到config.xml文件，找到“FindHistory”标签，删除标签内的所有节点即可。
-如果想要以后都不保存查找替换历史，
-找到“FindHistory”内修改“nbMaxFindHistoryPath”、“nbMaxFindHistoryFilter”、“nbMaxFindHistoryFind”、“nbMaxFindHistoryReplace”后的数字为0即可实现不容保存查找替换历史。
