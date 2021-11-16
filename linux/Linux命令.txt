@@ -1,3 +1,7 @@
+
+telnet: connect to address IP地址: No route to host
+需要开通所有端口   iptables -F
+
 软连接相当于Windows的快捷方式
 ln -s 需要打开的文件夹(目标文件夹)      新建的软连接(gitbackup)
 
