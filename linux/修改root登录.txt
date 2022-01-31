@@ -1,0 +1,13 @@
+firewall-cmd --add-port=80/tcp --permanent
+
+
+修改root登录
+
+echo root:TIAN |sudo chpasswd root
+sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+sudo service sshd restart
+-----------------------------------
+©著作权归作者所有：来自51CTO博客作者mb6155a75baf16e的原创作品，请联系作者获取转载授权，否则将追究法律责任
+甲骨文云服务器一键修改root密码一键修改root密码
+https://blog.51cto.com/u_15383317/4086332

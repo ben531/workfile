@@ -1,7 +1,9 @@
-
-telnet: connect to address IP地址: No route to host
-需要开通所有端口   iptables -F
-
+查看端口占用:
+lsof -i:port
+===========================
+sudo passwd root 
+该命令可以设置或者重置root密码
+============================================
 软连接相当于Windows的快捷方式
 ln -s 需要打开的文件夹(目标文件夹)      新建的软连接(gitbackup)
 
@@ -231,7 +233,7 @@ docker常用命令
  2. docker pull mysql  表示从官方下载默认(最新)版本的mysql，latest
     docker pull mysql:5.5  表示下载mysql版本5.5的
  3. docker images 查看当前本地的所有镜像
- 4. docker image rm image-id   删除制定镜像，image-id是每个镜像独有的id
+ 4. docker image rm image-id   删除指定镜像，image-id是每个镜像独有的id
  5. docker run ....  根据镜像启动容器 (具体查看菜鸟教程)
  6. docker ps            查看运行中的容器
  7. docker ps -a         查看所有容器(包含未启动的容器) 
