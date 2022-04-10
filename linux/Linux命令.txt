@@ -1,3 +1,4 @@
+查看Linux内核版本: cat /etc/*-release
 查看端口占用:
 lsof -i:port
 ===========================
@@ -167,11 +168,12 @@ sz 下载
 sudo chmod 777 文件夹名
 sudo chmod +x 文件名(将文件变成可执行文件)
 =============================================
-查询哪些端口已占用
-sudo firewall-cmd --list-ports
+查询哪些端口已开通
+	
 netstat -nupl (UDP类型的端口)
 netstat -ntpl (TCP类型的端口)
 查询哪些端口被占用: netstat -ntlp
+或者 lsof -i:port
 
 开通端口
 firewall-cmd --zone=public --add-port=3005/tcp --permanent
