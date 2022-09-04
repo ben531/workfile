@@ -1,0 +1,2 @@
+docker cp sources.list {容器名}:/etc/apt/sources.list
+docker cp sources.list /var/lib/docker/devicemapper/mnt/a203fd63b54e7e334a7a726f0cb178dcfb06e4857712262cf7a45bd1e38a20eb/rootfs/mnt

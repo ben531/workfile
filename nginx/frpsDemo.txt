@@ -1,0 +1,15 @@
+[common]
+bind_port = 7000 
+vhost_https_port = 7443
+# 使用kcp加速
+kcp_bind_port = 7001
+
+# auth
+authentication_method = token
+token = 12345678
+
+# log
+log_file = /var/log/frps.log
+log_level = info 
+log_max_days = 3
+

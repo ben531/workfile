@@ -1,0 +1,22 @@
+[common]
+# VPS服务器IP
+server_addr = xxx.xxx.xxx.xxx
+server_port = 7000
+# 使用kcp加速
+protocol = kcp
+
+# auth
+token = 12345678
+
+# log
+log_file = ./frpc.log
+log_level = info
+log_max_days = 3
+
+
+[nas]
+type = https
+# 内网NAS访问地址与端口
+local_ip = 192.168.1.100
+local_port = 443
+custom_domains = nas.test.com

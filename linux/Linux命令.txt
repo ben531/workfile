@@ -1,3 +1,7 @@
+修改 ll 命令：
+1. vi ~/bashrc
+2. 添加： alias ll='ls -al'
+
 查看Linux内核版本: cat /etc/*-release
 查看端口占用:
 lsof -i:port
@@ -48,6 +52,10 @@ nohup命令及其输出文件
 4. firewall-cmd --list-ports 查询哪些端口开通防火墙
 5. firewall-cmd --zone=public --add-port=3005/tcp --permanent
    firewall-cmd --reload   开通端口为3005的防火墙
+   
+   开放端口: 
+   iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+   
 =============================================
 虚拟机linux系统下ifconfig获取不到ip(试试 ip addr)
 原因：网卡未激活
